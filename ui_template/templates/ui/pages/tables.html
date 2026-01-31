@@ -1,0 +1,55 @@
+{% extends "ui/layout/app.html" %}
+{% block title %}Tables{% endblock %}
+{% block main %}
+<div class="overflow-x-auto bg-base-100 rounded-xl border border-base-200">
+  <table class="table table-zebra table-sm w-full">
+    <thead>
+      <tr class="text-base-content">
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th class="text-right">Column 5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="hover">
+        <td>Alpha</td>
+        <td>Item A</td>
+        <td>Active</td>
+        <td>01/12/2026</td>
+        <td class="text-right">$125.00</td>
+      </tr>
+      <tr class="hover">
+        <td>Bravo</td>
+        <td>Item B</td>
+        <td>Pending</td>
+        <td>01/13/2026</td>
+        <td class="text-right">$89.50</td>
+      </tr>
+      <tr class="hover">
+        <td>Charlie</td>
+        <td>Item C</td>
+        <td>Closed</td>
+        <td>01/14/2026</td>
+        <td class="text-right">$42.00</td>
+      </tr>
+      <tr class="hover">
+        <td>Delta</td>
+        <td>Item D</td>
+        <td>Active</td>
+        <td>01/15/2026</td>
+        <td class="text-right">$310.75</td>
+      </tr>
+      <tr class="hover">
+        <td>Echo</td>
+        <td>Item E</td>
+        <td>Active</td>
+        <td>01/16/2026</td>
+        <td class="text-right">$18.20</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

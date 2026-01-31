@@ -16,13 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.shortcuts import render
-from django.urls import path
+from django.urls import path, include
 
 def test_ui(request):
     return render(request, 'test_ui.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('test-ui/', test_ui),
-
+    path("", include("ui.urls")),
 ]

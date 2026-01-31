@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="min-h-screen bg-base-100">
+  <div class="flex">
+    {% include "ui/layout/sidebar.html" %}
+
+    <div class="flex-1 min-w-0 flex flex-col">
+      {% include "ui/layout/topbar.html" %}
+
+      <main class="flex-1 p-6">
+        {% block main %}{% endblock %}
+      </main>
+    </div>
+  </div>
+</div>
+{% endblock %}
