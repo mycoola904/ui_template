@@ -1,0 +1,20 @@
+{% extends "ui/layout/app.html" %}
+
+ {% block title %}Table Component Demo{% endblock %}
+
+{% block main %}
+  <div class="p-6 space-y-6">
+
+    <h1 class="text-xl font-semibold">
+      Table Component Demo
+    </h1>
+    
+    {% with headers=headers rows=rows actions=True empty_message="No rows" %}
+    {% include "ui/components/table.html" %}
+    {% endwith %}
+    </div>
+
+
+   
+    
+{% endblock %}

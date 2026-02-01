@@ -1,0 +1,73 @@
+<!--
+  ui/components/table.html
+
+  Usage:
+  {#{% with headers=headers rows=rows actions=True empty_message="No rows" %}#}
+  {#{% include "ui/components/table.html" %}#}
+  {#{% endwith %}#}
+
+  Where to include:
+    - In any template where a table is needed.
+
+
+
+  Expected context:
+    headers: list[str]
+    rows: list[dict] where each dict has:
+      - cells: list[str|safe html] (one per header)
+      - href: optional string for row navigation ("" allowed for template demo)
+      - actions_html: optional string|safe html (icons/buttons)
+    actions: bool (adds Actions column)
+    empty_message: optional string
+-->
+
+
+<div class="overflow-x-auto bg-base-100 rounded-xl border border-base-200">
+  <table class="table table-zebra table-sm w-full">
+    <thead>
+      <tr class="text-base-content">
+        {% for h in headers %}
+          <th>{{ h }}</th>
+        {% endfor %}
+        {% if actions %}
+          <th class="text-right w-28">Actions</th>
+        {% endif %}
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for row in rows %}
+        <tr class="hover group">
+          {% for cell in row.cells %}
+            <td>
+              {% if row.href is not None %}
+                <a href="{{ row.href|default:'' }}" class="block">
+                  {{ cell|safe }}
+                </a>
+              {% else %}
+                {{ cell|safe }}
+              {% endif %}
+            </td>
+          {% endfor %}
+
+          {% if actions %}
+            <td class="text-right">
+              <div class="inline-flex items-center gap-1
+                          opacity-0 group-hover:opacity-100 focus-within:opacity-100
+                          transition-opacity duration-150">
+                {{ row.actions_html|default:""|safe }}
+              </div>
+            </td>
+          {% endif %}
+        </tr>
+      {% empty %}
+        <tr>
+          <td class="text-center py-10 text-base-content/60"
+              colspan="{% if actions %}{{ headers|length|add:'1' }}{% else %}{{ headers|length }}{% endif %}">
+            {{ empty_message|default:"No rows" }}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
