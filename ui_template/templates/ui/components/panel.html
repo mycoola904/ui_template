@@ -1,0 +1,26 @@
+{# ui/components/panel.html #}
+
+<section class="bg-base-100 border border-base-200 rounded-xl shadow-sm">
+  {% if panel_title or panel_subtitle %}
+    <header class="px-6 pt-5 pb-3 border-b border-base-200">
+      {% if panel_title %}
+        <h2 class="text-base font-semibold leading-tight">{{ panel_title }}</h2>
+      {% endif %}
+      {% if panel_subtitle %}
+        <p class="mt-1 text-sm text-base-content/60">{{ panel_subtitle }}</p>
+      {% endif %}
+    </header>
+  {% endif %}
+
+  <div class="p-6">
+    {% include panel_body_template %}
+  </div>
+
+  {% if panel_footer_template %}
+    <footer class="px-6 pb-5 pt-3 border-t border-base-200">
+      <div class="flex items-center justify-end gap-2">
+        {% include panel_footer_template %}
+      </div>
+    </footer>
+  {% endif %}
+</section>

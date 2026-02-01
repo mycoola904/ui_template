@@ -45,3 +45,22 @@ def table_demo(request):
     })
 
 
+from django.shortcuts import render
+
+def panel_demo(request):
+    context = {
+        "panel_title": "Account Summary",
+        "panel_subtitle": "Header panel that will sit above the transactions table",
+        "panel_body_template": "ui/components/panel_bodies/account_header.html",
+        "panel_footer_template": "ui/components/panel_footers/account_header_actions.html",
+
+        "account_name": "Checking",
+        "account_type": "Bank Account",
+        "balance_display": "$2,481.19",
+        "updated_display": "Jan 31, 2026",
+    }
+    return render(request, "ui/pages/panel_demo.html", context)
+
+
+
+

@@ -1,0 +1,15 @@
+{% extends "ui/layout/app.html" %}
+
+{% block title %}Card Component Demo{% endblock %}
+
+{% block content %}
+  <div class="p-6 space-y-6">
+
+    <h1 class="text-xl font-semibold">Card Component Demo</h1>
+
+    {% with card_title="Account Summary" card_subtitle="Example header" card_body=card_body %}
+    {% include "ui/components/card.html" %}
+    {% endwith %}
+
+  </div>
+{% endblock %}

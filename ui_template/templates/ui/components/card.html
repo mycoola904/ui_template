@@ -1,0 +1,16 @@
+{# ui/components/card.html #}
+
+<div class="card bg-base-100 border border-base-200 rounded-xl shadow-sm">
+  {% if card_title %}
+    <div class="card-body pb-0">
+      <h2 class="card-title text-base">{{ card_title }}</h2>
+      {% if card_subtitle %}
+        <p class="text-sm text-base-content/60">{{ card_subtitle }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="card-body {% if card_title %}pt-4{% endif %}">
+    {{ card_body|safe }}
+  </div>
+</div>
