@@ -20,11 +20,7 @@ def table_demo(request):
         "Date",
     ]
 
-    actions_html = (
-        '<button class="btn btn-ghost btn-xs btn-square" type="button" aria-label="View">👁️</button>'
-        '<button class="btn btn-ghost btn-xs btn-square" type="button" aria-label="Edit">✏️</button>'
-        '<button class="btn btn-ghost btn-xs btn-square text-error" type="button" aria-label="Delete">🗑️</button>'
-    )
+  
 
     rows = [
         {
@@ -35,7 +31,7 @@ def table_demo(request):
                 "01/12/2026",
             ],
             "href": "",  # placeholder for template demo
-            "actions_html": actions_html,
+            "actions_template": "ui/components/table_actions/default.html",
         }
     ]
 
@@ -44,8 +40,6 @@ def table_demo(request):
         "rows": rows,
     })
 
-
-from django.shortcuts import render
 
 def panel_demo(request):
     context = {
@@ -60,6 +54,55 @@ def panel_demo(request):
         "updated_display": "Jan 31, 2026",
     }
     return render(request, "ui/pages/panel_demo.html", context)
+
+def account_detail_demo(request):
+    # Panel config
+    panel_context = {
+        "panel_title": "Account Summary",
+        "panel_subtitle": "Checking - Last updated Jan 31, 2026",
+        "panel_body_template": "ui/components/panel_bodies/account_header.html",
+        "panel_footer_template": "ui/components/panel_footers/account_header_actions.html",
+
+        # Panel body vars
+        "account_name": "Checking",
+        "account_type": "Bank Account",
+        "balance_display": "$2,481.19",
+        "updated_display": "Jan 31, 2026",
+    }
+
+    # Table config
+    headers = ["Date", "Description", "Category", "Amount", "Balance"]
+
+    actions_template = "ui/components/table_actions/default.html"
+
+    rows = [
+        {
+            "cells": ["01/31/2026", "Paycheck", "Income", "+$1,250.00", "$2,481.19"],
+            "href": "",  # placeholder for demo
+            "actions_template": actions_template,
+        },
+        {
+            "cells": ["01/29/2026", "Grocery Store", "Groceries", "-$86.42", "$1,231.19"],
+            "href": "",
+            "actions_template": actions_template,
+        },
+        {
+            "cells": ["01/28/2026", "Electric Bill", "Utilities", "-$142.10", "$1,317.61"],
+            "href": "",
+            "actions_template": actions_template,
+        },
+    ]
+
+    context = {
+        **panel_context,
+        "headers": headers,
+        "rows": rows,
+        "actions": True,
+        "empty_message": "No transactions",
+    }
+
+    return render(request, "ui/pages/account_detail_demo.html", context)
+
 
 
 

@@ -16,7 +16,7 @@
     rows: list[dict] where each dict has:
       - cells: list[str|safe html] (one per header)
       - href: optional string for row navigation ("" allowed for template demo)
-      - actions_html: optional string|safe html (icons/buttons)
+      - actions_template: optional template path for action buttons
     actions: bool (adds Actions column)
     empty_message: optional string
 -->
@@ -55,7 +55,9 @@
               <div class="inline-flex items-center gap-1
                           opacity-0 group-hover:opacity-100 focus-within:opacity-100
                           transition-opacity duration-150">
-                {{ row.actions_html|default:""|safe }}
+                {% if row.actions_template %}
+                  {% include row.actions_template %}
+                {% endif %}
               </div>
             </td>
           {% endif %}

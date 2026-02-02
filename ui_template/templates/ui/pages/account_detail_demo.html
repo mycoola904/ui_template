@@ -1,0 +1,19 @@
+{% extends "ui/layout/app.html" %}
+{% block title %}Account Detail Demo{% endblock %}
+
+{% block main %}
+  <div class="p-6 space-y-6">
+
+    <div class="flex items-center justify-between">
+      <h1 class="text-xl font-semibold">Account Detail</h1>
+      
+    </div>
+
+    {# Header panel #}
+    {% include "ui/components/panel.html" %}
+
+    {# Transactions table #}
+    {% include "ui/components/table.html" %}
+
+  </div>
+{% endblock %}
