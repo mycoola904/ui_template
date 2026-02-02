@@ -1,8 +1,30 @@
 {% extends "ui/layout/app.html" %}
 {% block title %}Dashboard{% endblock %}
 {% block main %}
-<div class="text-2xl font-semibold">Dashboard</div>
-<div class="mt-4 alert">
-  <span>Layout shell is working ✅</span>
+<div class="flex items-center justify-between">
+  <div>
+    <div class="text-2xl font-semibold">Dashboard</div>
+    <p class="mt-1 text-sm text-base-content/60">Overview of upcoming activity and spending</p>
+  </div>
+</div>
+
+<div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+  {% with dp_kicker="This Week" dp_title="Upcoming Due Dates" dp_subtitle="Accounts with bills due in the next 7 days" dp_body_template="ui/components/dashboard_panels/due_dates.html" %}
+    <div class="lg:col-span-1">
+      {% include "ui/components/dashboard_panel.html" %}
+    </div>
+  {% endwith %}
+
+  {% with dp_kicker="Budget" dp_title="Spending Mix" dp_subtitle="Monthly categories" dp_body_template="ui/components/dashboard_panels/budget_pie.html" %}
+    <div class="lg:col-span-1">
+      {% include "ui/components/dashboard_panel.html" %}
+    </div>
+  {% endwith %}
+
+  {% with dp_kicker="Transactions" dp_title="Latest Activity" dp_subtitle="Most recent account activity" dp_body_template="ui/components/dashboard_panels/latest_transactions.html" %}
+    <div class="lg:col-span-2">
+      {% include "ui/components/dashboard_panel.html" %}
+    </div>
+  {% endwith %}
 </div>
 {% endblock %}

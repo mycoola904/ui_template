@@ -1,0 +1,18 @@
+<div class="flex items-center gap-5">
+  <div class="h-32 w-32 rounded-full ring-8 ring-base-100"
+       style="background: {{ budget_conic }};">
+  </div>
+
+  <div class="space-y-2">
+    {% for slice in budget_legend %}
+      <div class="flex items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <span class="inline-block h-2.5 w-2.5 rounded-full"
+                style="background: {{ slice.color }};"></span>
+          <span class="text-sm text-base-content">{{ slice.label }}</span>
+        </div>
+        <span class="text-sm font-semibold text-base-content">{{ slice.amount }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>
